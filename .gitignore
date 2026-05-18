@@ -1,0 +1,21 @@
+# Source scrape — kept locally as reference, not versioned
+saveweb2zip-com-www-pantogar-com/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
+*.mojibake-bak
+
+# IDE
+.vscode/
+.idea/
+
+# Node (if any tooling is added later)
+node_modules/
+npm-debug.log*
+
+# Local-only Claude state
+.claude/worktrees/
