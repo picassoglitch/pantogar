@@ -1,6 +1,9 @@
 # Source scrape — kept locally as reference, not versioned
 saveweb2zip-com-www-pantogar-com/
 
+# Temporary tooling (translation scripts, crawler, etc.)
+_*.py
+
 # OS / editor junk
 .DS_Store
 Thumbs.db
