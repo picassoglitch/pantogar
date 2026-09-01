@@ -31,19 +31,23 @@ certificate issuance will not start.
 
 ## 3. Records to send to CSC
 
-| Type  | Name (host)        | Value                                  | TTL |
-|-------|--------------------|----------------------------------------|-----|
-| A     | `@` (pantogar.mx)  | *(apex IP shown by Vercel)*            | 300 |
-| CNAME | `www`              | *(target shown by Vercel)*             | 300 |
-| TXT   | `_vercel`          | *(only if Vercel asks to verify)*      | 300 |
+Confirmed from the Vercel dashboard (project → Settings → Domains):
 
-Typical Vercel values, to be confirmed against the dashboard:
-- Apex A record: `216.198.79.1` (current) — older projects still show `76.76.21.21`
-- www CNAME: `cname.vercel-dns.com` on older projects; newer projects get a unique
-  target such as `<hash>.vercel-dns-0NN.com`
+| Type  | Name (host) | Value                                  | TTL |
+|-------|-------------|----------------------------------------|-----|
+| A     | `@`         | `216.198.79.1`                         | 300 |
+| CNAME | `www`       | `1349c248c0044da5.vercel-dns-017.com.` | 300 |
 
-The `_vercel` TXT record only appears when the domain is already claimed on another
-Vercel account/team; if Vercel does not show it, skip it.
+Notes:
+- The CNAME hash is **hexadecimal** (`0-9`, `a-f`). The characters that can look
+  like a capital `O` are zeros. Always copy the value with Vercel's copy button
+  rather than retyping it.
+- Vercel's legacy targets (`cname.vercel-dns.com`, `76.76.21.21`) still work, but
+  the records above are the ones Vercel recommends for this project.
+- No `_vercel` TXT verification record is required — Vercel is not asking for one,
+  so the domain is not claimed on another account.
+- Both hostnames are already added in Vercel: `www.pantogar.mx` is Production and
+  the apex `pantogar.mx` is set to 308-redirect to it. No CSC URL Forwarding needed.
 
 ## 4. Ask CSC two extra questions
 
@@ -60,7 +64,7 @@ often carry a long TTL, so ask them to lower it a day ahead if possible.
 
 ## 5. Sequence
 
-1. Add both hostnames in Vercel → capture the records.
+1. ~~Add both hostnames in Vercel → capture the records.~~ Done.
 2. Send the table to Pauline; she requests admin approval on the CSC account.
 3. CSC applies the zone change and confirms.
 4. Watch Vercel → Settings → Domains until both hostnames show **Valid
